@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace MVCWebApi.Models
+{
+    public class Publisher
+    {
+        public int PublisherId { get; set; }
+        public string Name { get; set; }
+        public string Country { get; set; }
+
+        public virtual List<Book> Books { get; set; }
+    }
+}

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MVCWebApi.Services;
 
-namespace MVCWebApi.Services
+namespace MVCWebApi.Controllers
 {
     [Route("[controller]")]
     public class HelloController : Controller
