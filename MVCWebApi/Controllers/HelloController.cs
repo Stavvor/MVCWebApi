@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MVCWebApi.Services;
+using MVCWebApi.Models;
 
 namespace MVCWebApi.Controllers
 {
@@ -15,6 +16,8 @@ namespace MVCWebApi.Controllers
         public HelloController()
         {
             _helloService = new HelloService();
+            Adress adress = new Adress();
+           
         }
 
         // GET api/values/6

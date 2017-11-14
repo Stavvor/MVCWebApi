@@ -11,6 +11,6 @@ namespace MVCWebApi.Models
         public string Name { get; set; }
         public string Country { get; set; }
 
-        public virtual List<Book> Books { get; set; }
+     //   public virtual List<Book> Books { get; set; }
     }
 }

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MVCWebApi.DataAccessLayer
 {
-    public class AdressContext : DbContext
+    public class AdressContext
     {
-        public AdressContext() : base("") //TODO DB connection string
+        public AdressContext()  //TODO DB connection string
         { }
 
         public DbSet<Adress> Adresses { get; set; }

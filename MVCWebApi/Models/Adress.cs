@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace MVCWebApi.Models
 {
+    
     public class Adress
     {
         public int AdressId { get; set; }
@@ -16,5 +18,9 @@ namespace MVCWebApi.Models
         public int FlatNumber { get; set; }
 
         public virtual Client Client { get; set; }
+        public Adress()
+        {
+            PostalCode = 123;
+        }
     }
 }

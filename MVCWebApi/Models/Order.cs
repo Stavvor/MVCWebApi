@@ -13,6 +13,6 @@ namespace MVCWebApi.Models
         public DateTime RealizationDate { get; set; }
 
         public virtual Client Client { get; set; }
-        public virtual List<Book> Books { get; set; }
+      //  public virtual List<Book> Books { get; set; }
     }
 }

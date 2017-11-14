@@ -10,6 +10,6 @@ namespace MVCWebApi.Models
         public int GenreId { get; set; }
         public string name { get; set; }
 
-        public virtual List<Book> Books { get; set; } 
+     //   public virtual List<Book> Books { get; set; } 
     }
 }
