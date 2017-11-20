@@ -17,6 +17,8 @@ namespace MVCWebApi.Controllers
         public BooksController(LibraryContext context)
         {
             _context = context;
+            Book book = new Book();
+            Create(book);
         }
 
         // GET: Books

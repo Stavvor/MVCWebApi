@@ -16,7 +16,6 @@ namespace MVCWebApi.Controllers
         public HelloController()
         {
             _helloService = new HelloService();
-            Adress adress = new Adress();
            
         }
 
