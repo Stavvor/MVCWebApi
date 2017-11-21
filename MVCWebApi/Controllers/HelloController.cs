@@ -25,5 +25,15 @@ namespace MVCWebApi.Controllers
         {
             return _helloService.helloWorld();
         }
+
+        public async Task<IActionResult> Index()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
     }
 }
