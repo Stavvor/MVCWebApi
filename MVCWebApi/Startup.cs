@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MVCWebApi.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace MVCWebApi
 {
@@ -18,6 +19,11 @@ namespace MVCWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "SWAG" });
+            }
+            );
 
             var connection = @"Server=(localdb)\Serwer;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;";
             services.AddDbContext<LibraryContext>(options => options.UseSqlServer(connection));
@@ -39,6 +45,13 @@ namespace MVCWebApi
             }
 
             app.UseMvc();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "SWAG");
+            }
+                );
         }
     }
 }

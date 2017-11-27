@@ -22,7 +22,7 @@ namespace MVCWebApi.Controllers
         }
 
         // GET: Books
-        [HttpGet("Index")]
+        [HttpGet("Books/Index")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.book.ToListAsync());
@@ -53,15 +53,15 @@ namespace MVCWebApi.Controllers
         {
             Book book = new Book();
             book.Author = "dsfsdf";
-            book.Price = 100;
             _context.Add(book);
+            //_context.SaveChanges();
             return View();
         }
 
         // POST: Books/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost("Books/Create")]
+        [HttpPost("Books/Createe")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("BookId,Title,Author,Price,Test")] Book book)
         {
@@ -75,7 +75,7 @@ namespace MVCWebApi.Controllers
         }
 
         // GET: Books/Edit/5
-        [HttpGet("Edit/{id}")]
+        [HttpGet("Books/Edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -127,7 +127,7 @@ namespace MVCWebApi.Controllers
         }
 
         // GET: Books/Delete/5
-        [HttpGet("Delete/{id}")]
+        [HttpGet("Books/Delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

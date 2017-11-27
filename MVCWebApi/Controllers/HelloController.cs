@@ -20,17 +20,19 @@ namespace MVCWebApi.Controllers
         }
 
         // GET api/values/6
-        [HttpGet("{id}")]
+        [HttpGet("Hello/{id}")]
         public string Get(int id)
         {
             return _helloService.helloWorld();
         }
 
+        [HttpGet("Hello/Index")]
         public async Task<IActionResult> Index()
         {
             return View();
         }
 
+        [HttpGet("Hello/Create")]
         public async Task<IActionResult> Create()
         {
             return View();

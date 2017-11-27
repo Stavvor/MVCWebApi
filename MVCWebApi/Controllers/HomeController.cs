@@ -12,6 +12,7 @@ namespace MVCWebApi.Controllers
     public class HomeController : Controller
     {
         // GET: /<controller>/
+        [HttpGet("Home/Index")]
         public IActionResult Index()
         {
             return View();
