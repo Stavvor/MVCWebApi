@@ -52,9 +52,8 @@ namespace MVCWebApi.Controllers
         public IActionResult Create()
         {
             Book book = new Book();
-            book.Author = "dsfsdf";
             _context.Add(book);
-            //_context.SaveChanges();
+           //_context.SaveChanges();
             return View();
         }
 
