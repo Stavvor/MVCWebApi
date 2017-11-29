@@ -17,8 +17,6 @@ namespace MVCWebApi.Controllers
         public BooksController(LibraryContext context)
         {
             _context = context;
-            Book book = new Book();
-            Create(book);
         }
 
         // GET: Books
@@ -53,7 +51,6 @@ namespace MVCWebApi.Controllers
         {
             Book book = new Book();
             _context.Add(book);
-           //_context.SaveChanges();
             return View();
         }
 
@@ -61,8 +58,7 @@ namespace MVCWebApi.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost("Books/Createe")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BookId,Title,Author,Price,Test")] Book book)
+        public async Task<IActionResult> Create([FromBody] Book book)
         {
             if (ModelState.IsValid)
             {

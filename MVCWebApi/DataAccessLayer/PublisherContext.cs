@@ -12,6 +12,6 @@ namespace MVCWebApi.DataAccessLayer
         public PublisherContext() //TODO DB connection string
         { }
 
-        public DbSet<Publisher> Publishers { get; set; }
+            
     }
 }
