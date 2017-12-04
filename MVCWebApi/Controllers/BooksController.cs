@@ -23,7 +23,7 @@ namespace MVCWebApi.Controllers
         [HttpGet("Books/Index")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.book.ToListAsync());
+            return Json(await _context.book.ToListAsync());
         }
 
         // GET: Books/Details/5
@@ -41,17 +41,7 @@ namespace MVCWebApi.Controllers
             {
                 return NotFound();
             }
-
-            return View(book);
-        }
-
-        // GET: Books/Create
-        [HttpGet("Books/Create")]
-        public IActionResult Create()
-        {
-            Book book = new Book();
-            _context.Add(book);
-            return View();
+            return Json(book);
         }
 
         // POST: Books/Create
@@ -64,45 +54,32 @@ namespace MVCWebApi.Controllers
             {
                 _context.Add(book);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
-            return View(book);
-        }
-
-        // GET: Books/Edit/5
-        [HttpGet("Books/Edit/{id}")]
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var book = await _context.book.SingleOrDefaultAsync(m => m.BookId == id);
-            if (book == null)
-            {
-                return NotFound();
-            }
-            return View(book);
+            return Json(book);
         }
 
         // POST: Books/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BookId,Title,Author,Price,Test")] Book book)
+        [HttpPost("Books/Edit")]
+        public async Task<IActionResult> Edit(int id, [FromBody] Book book)
         {
-            if (id != book.BookId)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(book);
+                    var toEdit = await _context.book
+                    .SingleOrDefaultAsync(m => m.BookId == id);
+
+                    toEdit.Title = book.Title;
+                    toEdit.Author = book.Author;
+                    toEdit.Price = book.Price;
+                    toEdit.Author = book.Author;
+                    toEdit.Test = book.Test;
+
+                    _context.Update(toEdit);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -118,26 +95,22 @@ namespace MVCWebApi.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(book);
+            return Json(book);
         }
 
         // GET: Books/Delete/5
         [HttpGet("Books/Delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
+            if (id == null) return NotFound();
+     
             var book = await _context.book
                 .SingleOrDefaultAsync(m => m.BookId == id);
-            if (book == null)
-            {
-                return NotFound();
-            }
-
-            return View(book);
+            if (book == null) return NotFound();
+            
+            _context.Remove(book);
+            await _context.SaveChangesAsync();
+            return Json(book);
         }
 
         // POST: Books/Delete/5
@@ -154,6 +127,11 @@ namespace MVCWebApi.Controllers
         private bool BookExists(int id)
         {
             return _context.book.Any(e => e.BookId == id);
+        }
+
+        private void BookEdit(Book target, Book source)
+        {
+
         }
     }
 }
