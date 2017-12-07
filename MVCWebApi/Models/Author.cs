@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 namespace MVCWebApi.Models
 {
     
-    public class Author
+    public class Author : EntityModel
     {
-        public int AuthorId { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public DateTime Birthday { get; set; }
 
-       // public virtual List<Book> Books { get; set; } 
+        //public virtual List<BookAuthors> BookAuthors { get; set; } = new List<BookAuthors>();
     }
 }

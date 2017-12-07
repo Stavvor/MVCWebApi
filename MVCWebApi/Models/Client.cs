@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace MVCWebApi.Models
 {
-    public class Client
+    public class Client : EntityModel
     {
-        public int ClientId { get; set; }
         public int AdressId { get; set; }
         public int ContactId { get; set; }
         public string Username { get; set; }

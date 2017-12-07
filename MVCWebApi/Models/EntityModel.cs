@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace MVCWebApi.Models
 {
-    public class Genre : EntityModel
+    public class EntityModel
     {
-        public string name { get; set; }
-
-     //   public virtual List<Book> Books { get; set; } 
+        public int Id { get; set; }
     }
 }

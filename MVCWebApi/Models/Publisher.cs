@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace MVCWebApi.Models
 {
-    public class Publisher
+    public class Publisher : EntityModel
     {
-        public int PublisherId { get; set; }
         public string Name { get; set; }
         public string Country { get; set; }
 

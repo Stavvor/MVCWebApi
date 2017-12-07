@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace MVCWebApi.Models
 {
-    public class Order
+    public class Order : EntityModel
     {
-        public int OrderId { get; set; }
         public int ClientId { get; set; }
         public DateTime SubmitDate { get; set; }
         public DateTime RealizationDate { get; set; }

@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 namespace MVCWebApi.Models
 {
     
-    public class Adress
+    public class Adress : EntityModel
     {
-        public int AdressId { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
@@ -18,9 +17,6 @@ namespace MVCWebApi.Models
         public int FlatNumber { get; set; }
 
         public virtual Client Client { get; set; }
-        public Adress()
-        {
-            PostalCode = 123;
-        }
+      
     }
 }

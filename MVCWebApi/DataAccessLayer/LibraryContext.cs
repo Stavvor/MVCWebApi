@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MVCWebApi.Models;
+using System.Reflection;
+
 
 namespace MVCWebApi.DataAccessLayer
 {
@@ -22,5 +24,10 @@ namespace MVCWebApi.DataAccessLayer
         public DbSet<Publisher> publisher { get; set; }
         public DbSet<Contact> Contacts { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<BookAuthors>()
+            .HasKey(t => new { t.BookId, t.AuthorId });
+        }
     }
 }

@@ -7,24 +7,17 @@ using System.Threading.Tasks;
 
 namespace MVCWebApi.Models
 {
-    [DataContract]
-    public class Book
+    public class Book : EntityModel
     {
-        [DataMember]
-        public int BookId { get; set; }
-        [DataMember]
         public string Title { get; set; }
-        [DataMember]
         public string Author { get; set; }
-        [DataMember]
         public int Price { get; set; }
-        [DataMember]
         public int Test { get; set; }
 
 
-     //   public virtual Publisher Publisher { get; set; }
+        //   public virtual Publisher Publisher { get; set; }
 
-      //  public virtual List<Author> Authors { get; set; } 
+        //public virtual List<BookAuthors> BookAuthors { get; set; } = new List<BookAuthors>();
       //  public virtual List<Genre> Genres { get; set; }
       //  public virtual List<Order> Orders { get; set; }
     }

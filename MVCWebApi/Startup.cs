@@ -26,13 +26,8 @@ namespace MVCWebApi
             }
             );
 
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "projektzespolowy123.database.windows.net";
-            builder.UserID = "DBadmin";
-            builder.Password = "SuperBibliotekaKurwo123";
-            builder.InitialCatalog = "MVCRestApi";
-
-            services.AddDbContext<LibraryContext>(options => options.UseSqlServer(builder.ConnectionString));
+            var connection = @"Server=(localdb)\Serwer;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;";
+            services.AddDbContext<LibraryContext>(options => options.UseSqlServer(connection));
         }
         public Startup(IConfiguration configuration)
         {
