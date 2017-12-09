@@ -11,8 +11,8 @@ using System;
 namespace MVCWebApi.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20171114142200_Init")]
-    partial class Init
+    [Migration("20171209000343_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,12 +23,10 @@ namespace MVCWebApi.Migrations
 
             modelBuilder.Entity("MVCWebApi.Models.Adress", b =>
                 {
-                    b.Property<int>("AdressId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("City");
-
-                    b.Property<int?>("ClientId");
 
                     b.Property<string>("Country");
 
@@ -40,16 +38,14 @@ namespace MVCWebApi.Migrations
 
                     b.Property<string>("Street");
 
-                    b.HasKey("AdressId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
-
-                    b.ToTable("Adresses");
+                    b.ToTable("Adress");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Author", b =>
                 {
-                    b.Property<int>("AuthorId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("Birthday");
@@ -58,14 +54,36 @@ namespace MVCWebApi.Migrations
 
                     b.Property<string>("Name");
 
-                    b.HasKey("AuthorId");
+                    b.HasKey("Id");
 
-                    b.ToTable("Authors");
+                    b.ToTable("Author");
+                });
+
+            modelBuilder.Entity("MVCWebApi.Models.Book", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Author");
+
+                    b.Property<int>("Price");
+
+                    b.Property<int?>("PublisherId");
+
+                    b.Property<int>("Test");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PublisherId");
+
+                    b.ToTable("Book");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Client", b =>
                 {
-                    b.Property<int>("ClientId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("AdressId");
@@ -80,17 +98,15 @@ namespace MVCWebApi.Migrations
 
                     b.Property<string>("Username");
 
-                    b.HasKey("ClientId");
+                    b.HasKey("Id");
 
                     b.ToTable("Client");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Contact", b =>
                 {
-                    b.Property<int>("ContactId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("ClientId");
 
                     b.Property<string>("Email");
 
@@ -98,16 +114,26 @@ namespace MVCWebApi.Migrations
 
                     b.Property<int>("PhoneNumber2");
 
-                    b.HasKey("ContactId");
-
-                    b.HasIndex("ClientId");
+                    b.HasKey("Id");
 
                     b.ToTable("Contact");
                 });
 
+            modelBuilder.Entity("MVCWebApi.Models.Genre", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Genre");
+                });
+
             modelBuilder.Entity("MVCWebApi.Models.Order", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("ClientId");
@@ -116,33 +142,30 @@ namespace MVCWebApi.Migrations
 
                     b.Property<DateTime>("SubmitDate");
 
-                    b.HasKey("OrderId");
-
-                    b.HasIndex("ClientId");
+                    b.HasKey("Id");
 
                     b.ToTable("Order");
                 });
 
-            modelBuilder.Entity("MVCWebApi.Models.Adress", b =>
+            modelBuilder.Entity("MVCWebApi.Models.Publisher", b =>
                 {
-                    b.HasOne("MVCWebApi.Models.Client", "Client")
-                        .WithMany("Adresses")
-                        .HasForeignKey("ClientId");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Country");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Publisher");
                 });
 
-            modelBuilder.Entity("MVCWebApi.Models.Contact", b =>
+            modelBuilder.Entity("MVCWebApi.Models.Book", b =>
                 {
-                    b.HasOne("MVCWebApi.Models.Client", "Client")
-                        .WithMany("Contcats")
-                        .HasForeignKey("ClientId");
-                });
-
-            modelBuilder.Entity("MVCWebApi.Models.Order", b =>
-                {
-                    b.HasOne("MVCWebApi.Models.Client", "Client")
-                        .WithMany("Orders")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("MVCWebApi.Models.Publisher", "Publisher")
+                        .WithMany()
+                        .HasForeignKey("PublisherId");
                 });
 #pragma warning restore 612, 618
         }

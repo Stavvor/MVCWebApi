@@ -36,13 +36,13 @@ namespace MVCWebApi.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<T> Read(int id)
+        public async Task<T> Read(int? id)
         {
             return await _context.Set<T>()
                 .SingleOrDefaultAsync(m => m.Id == id);
         }
 
-        public async Task Delete(int id)
+        public async Task Delete(int? id)
         {
             var entity = await GetById(id);
             _context.Set<T>()
@@ -56,7 +56,7 @@ namespace MVCWebApi.Repositories
             await _context.SaveChangesAsync();
         }
 
-        private async Task<T> GetById(int id)
+        private async Task<T> GetById(int? id)
         {
             return await _context.Set<T>()
                         .AsNoTracking()

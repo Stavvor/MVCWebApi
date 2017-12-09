@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVCWebApi.Models.ManyToMany;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -15,10 +16,10 @@ namespace MVCWebApi.Models
         public int Test { get; set; }
 
 
-        //   public virtual Publisher Publisher { get; set; }
+        public virtual Publisher Publisher { get; set; }
 
         //public virtual List<BookAuthors> BookAuthors { get; set; } = new List<BookAuthors>();
-      //  public virtual List<Genre> Genres { get; set; }
-      //  public virtual List<Order> Orders { get; set; }
+        //public virtual List<BookGenres> BookGenres { get; set; } = new List<BookGenres>();
+        //public virtual List<BookOrders> BookOrders { get; set; } = new List<BookOrders>();
     }
 }

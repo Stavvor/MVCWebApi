@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVCWebApi.Models.ManyToMany;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,6 @@ namespace MVCWebApi.Models
     {
         public string name { get; set; }
 
-     //   public virtual List<Book> Books { get; set; } 
+        //public virtual List<BookGenres> BookGenres { get; set; } = new List<BookGenres>();
     }
 }

@@ -28,21 +28,32 @@ namespace MVCWebApi.Services
             await _repository.Create(entity);
         }
 
-        public async Task<T> Read(int id)
+        public async Task<T> Read(int? id)
         {
-            return await _repository.Read(id);
+            if (checkID(id))
+            {
+                return await _repository.Read(id);
+            }
+            return null;
         }
 
-        public async Task Update(int id, T entity)
+        public async Task Update(T entity)
         {
-            var toRemove = await _repository.Read(id);
-            await _repository.RemoveByValue(toRemove);
-            await _repository.Create(entity);
+            await _repository.Update(entity);
         }
 
-        public async Task Delete(int id)
+        public async Task Delete(int? id)
         {
-            await _repository.Delete(id);
+            if (checkID(id))
+            {
+                await _repository.Delete(id);
+            }
+        }
+
+        private bool checkID(int? id)
+        {
+            if (id == null) return false;
+            else return true;
         }
     }
 }

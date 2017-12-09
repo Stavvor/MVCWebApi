@@ -26,8 +26,13 @@ namespace MVCWebApi
             }
             );
 
-            var connection = @"Server=(localdb)\Serwer;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;";
-            services.AddDbContext<LibraryContext>(options => options.UseSqlServer(connection));
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            builder.DataSource = "projektzespolowy123.database.windows.net";
+            builder.UserID = "DBadmin";
+            builder.Password = "SuperBibliotekaKurwo123";
+            builder.InitialCatalog = "uselesslibrary";
+
+            services.AddDbContext<LibraryContext>(options => options.UseSqlServer(builder.ConnectionString));
         }
         public Startup(IConfiguration configuration)
         {
