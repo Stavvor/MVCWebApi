@@ -15,8 +15,7 @@ namespace MVCWebApi.Models
         public int PostalCode { get; set; } 
         public int HouseNumber { get; set; }
         public int FlatNumber { get; set; }
-
-        //public virtual Client Client { get; set; }
-      
+        public int ClientId { get; set; }
+        public Client Client { get; set; }
     }
 }

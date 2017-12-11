@@ -14,9 +14,8 @@ namespace MVCWebApi.Models
         public string Name { get; set; }
         public string LastName { get; set; }
 
-        //public virtual List<Adress> Adresses { get; set; }
-        //public virtual List<Contact> Contcats { get; set; }
-        //public virtual List<Order> Orders { get; set; }
+        public List<Adress> Adresses { get; set; }
+        public List<Order> Orders { get; set; }
 
     }
 }

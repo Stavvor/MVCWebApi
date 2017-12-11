@@ -27,6 +27,8 @@ namespace MVCWebApi.Migrations
 
                     b.Property<string>("City");
 
+                    b.Property<int>("ClientId");
+
                     b.Property<string>("Country");
 
                     b.Property<int>("FlatNumber");
@@ -39,7 +41,9 @@ namespace MVCWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Adress");
+                    b.HasIndex("ClientId");
+
+                    b.ToTable("Adresses");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Author", b =>
@@ -55,7 +59,7 @@ namespace MVCWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Author");
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Book", b =>
@@ -63,13 +67,15 @@ namespace MVCWebApi.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Author");
+                    b.Property<string>("Binding");
+
+                    b.Property<int>("PageNumber");
 
                     b.Property<int>("Price");
 
-                    b.Property<int?>("PublisherId");
+                    b.Property<DateTime>("PublishDate");
 
-                    b.Property<int>("Test");
+                    b.Property<int>("PublisherId");
 
                     b.Property<string>("Title");
 
@@ -77,7 +83,22 @@ namespace MVCWebApi.Migrations
 
                     b.HasIndex("PublisherId");
 
-                    b.ToTable("Book");
+                    b.ToTable("book");
+                });
+
+            modelBuilder.Entity("MVCWebApi.Models.BookAuthors", b =>
+                {
+                    b.Property<int>("AuthorId");
+
+                    b.Property<int>("BookId");
+
+                    b.Property<int>("Id");
+
+                    b.HasKey("AuthorId", "BookId");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("BooksAuthors");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Client", b =>
@@ -99,13 +120,17 @@ namespace MVCWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Client");
+                    b.ToTable("client");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Contact", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ClientId");
+
+                    b.Property<int?>("ClientId1");
 
                     b.Property<string>("Email");
 
@@ -115,7 +140,9 @@ namespace MVCWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Contact");
+                    b.HasIndex("ClientId1");
+
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Genre", b =>
@@ -127,7 +154,37 @@ namespace MVCWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genre");
+                    b.ToTable("genres");
+                });
+
+            modelBuilder.Entity("MVCWebApi.Models.ManyToMany.BookGenres", b =>
+                {
+                    b.Property<int>("BookId");
+
+                    b.Property<int>("GenreId");
+
+                    b.Property<int>("Id");
+
+                    b.HasKey("BookId", "GenreId");
+
+                    b.HasIndex("GenreId");
+
+                    b.ToTable("BooksGenres");
+                });
+
+            modelBuilder.Entity("MVCWebApi.Models.ManyToMany.BookOrders", b =>
+                {
+                    b.Property<int>("OrderId");
+
+                    b.Property<int>("BookId");
+
+                    b.Property<int>("Id");
+
+                    b.HasKey("OrderId", "BookId");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("BooksOrders");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Order", b =>
@@ -143,7 +200,9 @@ namespace MVCWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Order");
+                    b.HasIndex("ClientId");
+
+                    b.ToTable("order");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Publisher", b =>
@@ -157,14 +216,77 @@ namespace MVCWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Publisher");
+                    b.ToTable("publisher");
+                });
+
+            modelBuilder.Entity("MVCWebApi.Models.Adress", b =>
+                {
+                    b.HasOne("MVCWebApi.Models.Client", "Client")
+                        .WithMany("Adresses")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Book", b =>
                 {
                     b.HasOne("MVCWebApi.Models.Publisher", "Publisher")
+                        .WithMany("Books")
+                        .HasForeignKey("PublisherId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MVCWebApi.Models.BookAuthors", b =>
+                {
+                    b.HasOne("MVCWebApi.Models.Author", "Author")
+                        .WithMany("BooksAuthors")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MVCWebApi.Models.Book", "Book")
+                        .WithMany("BooksAuthors")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MVCWebApi.Models.Contact", b =>
+                {
+                    b.HasOne("MVCWebApi.Models.Client", "Client")
                         .WithMany()
-                        .HasForeignKey("PublisherId");
+                        .HasForeignKey("ClientId1");
+                });
+
+            modelBuilder.Entity("MVCWebApi.Models.ManyToMany.BookGenres", b =>
+                {
+                    b.HasOne("MVCWebApi.Models.Book", "Book")
+                        .WithMany("BooksGenres")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MVCWebApi.Models.Genre", "Genre")
+                        .WithMany("BooksGenres")
+                        .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MVCWebApi.Models.ManyToMany.BookOrders", b =>
+                {
+                    b.HasOne("MVCWebApi.Models.Book", "Book")
+                        .WithMany("BooksOrders")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MVCWebApi.Models.Order", "Order")
+                        .WithMany("BooksOrders")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MVCWebApi.Models.Order", b =>
+                {
+                    b.HasOne("MVCWebApi.Models.Client", "Client")
+                        .WithMany("Orders")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

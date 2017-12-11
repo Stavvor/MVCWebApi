@@ -13,6 +13,6 @@ namespace MVCWebApi.Models
         public string LastName { get; set; }
         public DateTime Birthday { get; set; }
 
-        //public virtual List<BookAuthors> BookAuthors { get; set; } = new List<BookAuthors>();
+        public List<BookAuthors> BooksAuthors { get; set; }
     }
 }

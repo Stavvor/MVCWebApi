@@ -12,7 +12,8 @@ namespace MVCWebApi.Models
         public DateTime SubmitDate { get; set; }
         public DateTime RealizationDate { get; set; }
 
-        //public virtual Client Client { get; set; }
-        //public virtual List<BookOrders> BookOrders { get; set; } = new List<BookOrders>();
+        public List<BookOrders> BooksOrders { get; set; }
+        public Client Client { get; set; }
+
     }
 }

@@ -10,7 +10,7 @@ namespace MVCWebApi.Models
         public int PhoneNumber1 { get; set; }
         public int PhoneNumber2 { get; set; }
         public string Email { get; set; }
-
-        //public virtual Client Client { get; set; }
+        public int ClientId { get; set; }
+        public virtual Client Client { get; set; }
     }
 }
