@@ -50,7 +50,7 @@ namespace MVCWebApi.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task RemoveByValue(T entity)
+        private async Task RemoveByValue(T entity)
         {
             _context.Remove(entity);
             await _context.SaveChangesAsync();

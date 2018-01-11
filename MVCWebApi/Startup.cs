@@ -22,7 +22,7 @@ namespace MVCWebApi
             services.AddMvc();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "SWAG" });
+                c.SwaggerDoc("v1", new Info { Title = "library api" });
             }
             );
 

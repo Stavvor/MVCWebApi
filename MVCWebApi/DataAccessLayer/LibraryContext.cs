@@ -15,17 +15,17 @@ namespace MVCWebApi.DataAccessLayer
             : base(options)
         { }
 
-        public DbSet<Adress> Adresses { get; set; }
-        public DbSet<Author> Authors { get; set; }
-        public DbSet<BookAuthors> BooksAuthors { get; set; }
-        public DbSet<Book> book { get; set; }
+        public DbSet<Adress> Adres { get; set; }
+        public DbSet<Author> Author { get; set; }
+        public DbSet<BookAuthors> BookAuthors { get; set; }
+        public DbSet<Book> Book { get; set; }
         public DbSet<BookGenres> BooksGenres { get; set; }
-        public DbSet<Client> client { get; set; }
-        public DbSet<Contact> Contacts { get; set; }
-        public DbSet<Genre> genres { get; set; }
-        public DbSet<Order> order { get; set; }
-        public DbSet<BookOrders> BooksOrders { get; set; }
-        public DbSet<Publisher> publisher { get; set; }
+        public DbSet<Client> Client { get; set; }
+        public DbSet<Contact> Contact { get; set; }
+        public DbSet<Genre> Genre { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<BookOrders> BookOrders { get; set; }
+        public DbSet<Publisher> Publisher { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
