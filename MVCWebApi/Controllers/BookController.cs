@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MVCWebApi.DataAccessLayer;
 using MVCWebApi.Models;
@@ -16,8 +17,9 @@ namespace MVCWebApi.Controllers
         }
 
         [HttpGet("Book/getAll")]
+        [EnableCors("AllowAll")]
         public async Task<IActionResult> getAll()
-        {   
+        {
             return Json(await _service.GetAll());
         }
 

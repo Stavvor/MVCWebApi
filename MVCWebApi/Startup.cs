@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using MVCWebApi.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Data.SqlClient;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 
 namespace MVCWebApi
 {
@@ -19,7 +15,22 @@ namespace MVCWebApi
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+            options.AddPolicy("AllowAnyOrigin",
+                Cbuilder => Cbuilder.AllowAnyOrigin()
+                                    .AllowAnyMethod()
+                                    .AllowAnyHeader());
+                    
+            });
+
             services.AddMvc();
+
+            services.Configure<MvcOptions>(options =>
+            {
+                options.Filters.Add(new CorsAuthorizationFilterFactory("AllowAnyOrigin"));
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "library api" });
@@ -49,6 +60,8 @@ namespace MVCWebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("AllowAnyOrigin");
 
             app.UseMvc();
 
