@@ -15,5 +15,6 @@ namespace MVCWebApi.Models
         public List<BookOrders> BooksOrders { get; set; }
         public Client Client { get; set; }
 
+        public virtual List<BookOrders> BookOrders { get; set; } = new List<BookOrders>();
     }
 }

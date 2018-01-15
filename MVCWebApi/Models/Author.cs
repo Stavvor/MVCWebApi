@@ -14,5 +14,7 @@ namespace MVCWebApi.Models
         public DateTime Birthday { get; set; }
 
         public List<BookAuthors> BooksAuthors { get; set; }
+
+        public virtual List<BookAuthors> BookAuthors { get; set; } = new List<BookAuthors>();
     }
 }

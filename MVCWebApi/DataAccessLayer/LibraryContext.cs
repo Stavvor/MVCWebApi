@@ -15,7 +15,7 @@ namespace MVCWebApi.DataAccessLayer
             : base(options)
         { }
 
-        public DbSet<Adress> Adres { get; set; }
+        public DbSet<Adress> Adress { get; set; }
         public DbSet<Author> Author { get; set; }
         public DbSet<BookAuthors> BookAuthors { get; set; }
         public DbSet<Book> Book { get; set; }
@@ -27,11 +27,12 @@ namespace MVCWebApi.DataAccessLayer
         public DbSet<BookOrders> BookOrders { get; set; }
         public DbSet<Publisher> Publisher { get; set; }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BookAuthors>().HasKey(c => new { c.AuthorId, c.BookId });
             modelBuilder.Entity<BookGenres>().HasKey(c => new { c.BookId, c.GenreId });
-            modelBuilder.Entity<BookOrders>().HasKey(c => new { c.OrderId, c.BookId });
+            modelBuilder.Entity<BookOrders>().HasKey(c =>  new { c.OrderId, c.BookId });
         }
 
     }

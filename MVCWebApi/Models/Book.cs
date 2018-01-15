@@ -22,8 +22,8 @@ namespace MVCWebApi.Models
         public List<BookAuthors> BooksAuthors { get; set; }
         public Publisher Publisher { get; set; }
 
-        //public virtual List<BookAuthors> BookAuthors { get; set; } = new List<BookAuthors>();
-        //public virtual List<BookGenres> BookGenres { get; set; } = new List<BookGenres>();
-        //public virtual List<BookOrders> BookOrders { get; set; } = new List<BookOrders>();
+        public virtual List<BookAuthors> BookAuthors { get; set; } = new List<BookAuthors>();
+        public virtual List<BookGenres> BookGenres { get; set; } = new List<BookGenres>();
+        public virtual List<BookOrders> BookOrders { get; set; } = new List<BookOrders>();
     }
 }

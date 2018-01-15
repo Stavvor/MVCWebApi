@@ -43,7 +43,7 @@ namespace MVCWebApi.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("Adresses");
+                    b.ToTable("Adress");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Author", b =>
@@ -59,7 +59,7 @@ namespace MVCWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors");
+                    b.ToTable("Author");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Book", b =>
@@ -83,7 +83,7 @@ namespace MVCWebApi.Migrations
 
                     b.HasIndex("PublisherId");
 
-                    b.ToTable("book");
+                    b.ToTable("Book");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.BookAuthors", b =>
@@ -98,7 +98,7 @@ namespace MVCWebApi.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("BooksAuthors");
+                    b.ToTable("BookAuthors");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Client", b =>
@@ -120,7 +120,7 @@ namespace MVCWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("client");
+                    b.ToTable("Client");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Contact", b =>
@@ -142,7 +142,7 @@ namespace MVCWebApi.Migrations
 
                     b.HasIndex("ClientId1");
 
-                    b.ToTable("Contacts");
+                    b.ToTable("Contact");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Genre", b =>
@@ -154,7 +154,7 @@ namespace MVCWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("genres");
+                    b.ToTable("Genre");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.ManyToMany.BookGenres", b =>
@@ -184,7 +184,7 @@ namespace MVCWebApi.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("BooksOrders");
+                    b.ToTable("BookOrders");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Order", b =>
@@ -202,7 +202,7 @@ namespace MVCWebApi.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("order");
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Publisher", b =>
@@ -216,7 +216,7 @@ namespace MVCWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("publisher");
+                    b.ToTable("Publisher");
                 });
 
             modelBuilder.Entity("MVCWebApi.Models.Adress", b =>

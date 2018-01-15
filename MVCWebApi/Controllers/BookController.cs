@@ -17,7 +17,6 @@ namespace MVCWebApi.Controllers
         }
 
         [HttpGet("Book/getAll")]
-        [EnableCors("AllowAll")]
         public async Task<IActionResult> getAll()
         {
             return Json(await _service.GetAll());
