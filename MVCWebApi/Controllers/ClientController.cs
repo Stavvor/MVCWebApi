@@ -3,16 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 using MVCWebApi.DataAccessLayer;
 using MVCWebApi.Models;
 using MVCWebApi.Services;
+using MVCWebApi.Repositories;
 
 namespace MVCWebApi.Controllers
 {
     public class ClientController : Controller
     {
-        private readonly Service<Client> _service;
+        private readonly IService<Client> _service;
 
         public ClientController(LibraryContext dbContext)
         {
-            _service = new Service<Client>(dbContext);
+            _service = new Service<Client>(new Repository<Client>(dbContext));
         }
 
         [HttpGet("Client/getAll")]

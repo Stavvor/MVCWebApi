@@ -2,17 +2,18 @@
 using Microsoft.AspNetCore.Mvc;
 using MVCWebApi.DataAccessLayer;
 using MVCWebApi.Models;
+using MVCWebApi.Repositories;
 using MVCWebApi.Services;
 
 namespace MVCWebApi.Controllers
 {
     public class AdressController : Controller
     {
-        private readonly Service<Adress> _service;
+        private readonly IService<Adress> _service;
 
         public AdressController(LibraryContext dbContext)
         {
-            _service = new Service<Adress>(dbContext);
+            _service = new Service<Adress>(new Repository<Adress>(dbContext));
         }
 
         [HttpGet("Adress/getAll")]

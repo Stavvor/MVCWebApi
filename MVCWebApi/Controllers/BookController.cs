@@ -1,19 +1,19 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MVCWebApi.DataAccessLayer;
 using MVCWebApi.Models;
+using MVCWebApi.Repositories;
 using MVCWebApi.Services;
 
 namespace MVCWebApi.Controllers
 {
     public class BookController : Controller
     {
-        private readonly Service<Book> _service;
+        private readonly IService<Book> _service;
 
         public BookController(LibraryContext dbContext)
         {
-            _service = new Service<Book>(dbContext);
+            _service = new Service<Book>(new Repository<Book>(dbContext));
         }
 
         [HttpGet("Book/getAll")]

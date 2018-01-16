@@ -2,17 +2,18 @@
 using Microsoft.AspNetCore.Mvc;
 using MVCWebApi.DataAccessLayer;
 using MVCWebApi.Models;
+using MVCWebApi.Repositories;
 using MVCWebApi.Services;
 
 namespace MVCWebApi.Controllers
 {
     public class OrderController : Controller
     {
-        private readonly Service<Order> _service;
+        private readonly IService<Order> _service;
 
         public OrderController(LibraryContext dbContext)
         {
-            _service = new Service<Order>(dbContext);
+            _service = new Service<Order>(new Repository<Order>(dbContext));
         }
 
         [HttpGet("Order/getAll")]

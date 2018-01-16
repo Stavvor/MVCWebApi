@@ -2,17 +2,18 @@
 using Microsoft.AspNetCore.Mvc;
 using MVCWebApi.DataAccessLayer;
 using MVCWebApi.Models;
+using MVCWebApi.Repositories;
 using MVCWebApi.Services;
 
 namespace MVCWebApi.Controllers
 {
     public class PublisherController : Controller
     {
-        private readonly Service<Publisher> _service;
+        private readonly IService<Publisher> _service;
 
         public PublisherController(LibraryContext dbContext)
         {
-            _service = new Service<Publisher>(dbContext);
+            _service = new Service<Publisher>(new Repository<Publisher>(dbContext));
         }
 
         [HttpGet("Publisher/getAll")]

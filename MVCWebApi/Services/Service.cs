@@ -1,21 +1,21 @@
-﻿using System;
+﻿using MVCWebApi.DataAccessLayer;
+using MVCWebApi.Models;
+using MVCWebApi.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MVCWebApi.Repositories;
-using MVCWebApi.Models;
-using MVCWebApi.DataAccessLayer;
 
 namespace MVCWebApi.Services
 {
-    public class Service<T>
+    public class Service<T> : IService<T>
         where T : EntityModel
     {
-        private readonly Repository<T> _repository;
+        private readonly IRepository<T> _repository;
 
-        public Service(LibraryContext Context)
+        public Service(IRepository<T> repository)
         {
-            _repository = new Repository<T>(Context);
+            _repository = repository;
         }
 
         public async Task<List<T>> GetAll()
@@ -30,7 +30,7 @@ namespace MVCWebApi.Services
 
         public async Task<T> Read(int? id)
         {
-            if (checkID(id))
+            if (CheckID(id))
             {
                 return await _repository.Read(id);
             }
@@ -44,13 +44,13 @@ namespace MVCWebApi.Services
 
         public async Task Delete(int? id)
         {
-            if (checkID(id))
+            if (CheckID(id))
             {
                 await _repository.Delete(id);
             }
         }
 
-        private bool checkID(int? id)
+        public bool CheckID(int? id)
         {
             if (id == null) return false;
             else return true;

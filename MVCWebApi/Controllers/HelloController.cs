@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MVCWebApi.Services;
-using MVCWebApi.Models;
+using MVCWebApi.Repositories;
 
 namespace MVCWebApi.Controllers
 {

@@ -3,16 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 using MVCWebApi.DataAccessLayer;
 using MVCWebApi.Models;
 using MVCWebApi.Services;
+using MVCWebApi.Repositories;
 
 namespace MVCWebApi.Controllers
 {
     public class GenreController : Controller
     {
-        private readonly Service<Genre> _service;
+        private readonly IService<Genre> _service;
 
         public GenreController(LibraryContext dbContext)
         {
-            _service = new Service<Genre>(dbContext);
+            _service = new Service<Genre>(new Repository<Genre>(dbContext));
         }
 
         [HttpGet("Genre/getAll")]

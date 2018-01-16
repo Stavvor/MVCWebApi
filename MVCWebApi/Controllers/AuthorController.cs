@@ -3,16 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 using MVCWebApi.DataAccessLayer;
 using MVCWebApi.Models;
 using MVCWebApi.Services;
+using MVCWebApi.Repositories;
 
 namespace MVCWebApi.Controllers
 {
     public class AuthorController : Controller
     {
-        private readonly Service<Author> _service;
+        private readonly IService<Author> _service;
 
         public AuthorController(LibraryContext dbContext)
         {
-            _service = new Service<Author>(dbContext);
+            _service = new Service<Author>(new Repository<Author>(dbContext));
         }
 
         [HttpGet("Author/getAll")]

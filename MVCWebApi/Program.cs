@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
 namespace MVCWebApi
 {
@@ -14,6 +7,9 @@ namespace MVCWebApi
     {
         public static void Main(string[] args)
         {
+            IoC iocmanager = new IoC();
+            iocmanager.Setup();
+
             BuildWebHost(args).Run();
         }
 
