@@ -30,6 +30,7 @@ namespace MVCWebApi.DataAccessLayer
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<BookAuthors>().HasKey(c => new { c.AuthorId, c.BookId });
             modelBuilder.Entity<BookGenres>().HasKey(c => new { c.BookId, c.GenreId });
             modelBuilder.Entity<BookOrders>().HasKey(c =>  new { c.OrderId, c.BookId });

@@ -17,13 +17,13 @@ namespace MVCWebApi.Models
         public int PublisherId { get; set; }
         public int Price { get; set; }
 
-        public List<BookOrders> BooksOrders { get; set; }
-        public List<BookGenres> BooksGenres { get; set; }
-        public List<BookAuthors> BooksAuthors { get; set; }
-        public Publisher Publisher { get; set; }
-
-        public virtual List<BookAuthors> BookAuthors { get; set; } = new List<BookAuthors>();
-        public virtual List<BookGenres> BookGenres { get; set; } = new List<BookGenres>();
-        public virtual List<BookOrders> BookOrders { get; set; } = new List<BookOrders>();
+        //public List<BookOrders> BooksOrders { get; set; }
+        //public List<BookGenres> BooksGenres { get; set; }
+        //public List<BookAuthors> BooksAuthors { get; set; }
+        //public Publisher Publisher { get; set; }
+        //
+        //public virtual List<BookAuthors> BookAuthors { get; set; } = new List<BookAuthors>();
+        //public virtual List<BookGenres> BookGenres { get; set; } = new List<BookGenres>();
+        //public virtual List<BookOrders> BookOrders { get; set; } = new List<BookOrders>();
     }
 }

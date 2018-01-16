@@ -9,7 +9,7 @@ namespace MVCWebApi.Controllers
 {
     public class ContactController : Controller
     {
-        private readonly IService<Contact> _service;
+        private readonly ICRUD<Contact> _service;
 
         public ContactController(LibraryContext dbContext)
         {

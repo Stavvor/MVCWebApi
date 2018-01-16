@@ -9,7 +9,7 @@ namespace MVCWebApi.Controllers
 {
     public class BookController : Controller
     {
-        private readonly IService<Book> _service;
+        private readonly ICRUD<Book> _service;
 
         public BookController(LibraryContext dbContext)
         {

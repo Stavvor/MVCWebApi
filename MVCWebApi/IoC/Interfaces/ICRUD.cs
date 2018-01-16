@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MVCWebApi
 {
-    public interface IService<T>
+    public interface ICRUD<T>
         where T : EntityModel
     {
         Task<List<T>> GetAll();
@@ -18,8 +18,5 @@ namespace MVCWebApi
         Task Update(T entity);
 
         Task Delete(int? id);
-
-        bool CheckID(int? id);
-        
     }
 }

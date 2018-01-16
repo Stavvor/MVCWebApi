@@ -9,7 +9,7 @@ namespace MVCWebApi.Controllers
 {
     public class AuthorController : Controller
     {
-        private readonly IService<Author> _service;
+        private readonly ICRUD<Author> _service;
 
         public AuthorController(LibraryContext dbContext)
         {

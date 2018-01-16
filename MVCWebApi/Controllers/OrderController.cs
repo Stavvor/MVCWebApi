@@ -9,7 +9,7 @@ namespace MVCWebApi.Controllers
 {
     public class OrderController : Controller
     {
-        private readonly IService<Order> _service;
+        private readonly ICRUD<Order> _service;
 
         public OrderController(LibraryContext dbContext)
         {

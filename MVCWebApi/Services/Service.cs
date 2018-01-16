@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace MVCWebApi.Services
 {
-    public class Service<T> : IService<T>
+    public class Service<T> : ICRUD<T>
         where T : EntityModel
     {
-        private readonly IRepository<T> _repository;
+        private readonly ICRUD<T> _repository;
 
-        public Service(IRepository<T> repository)
+        public Service(ICRUD<T> repository)
         {
             _repository = repository;
         }
@@ -50,7 +50,7 @@ namespace MVCWebApi.Services
             }
         }
 
-        public bool CheckID(int? id)
+        private bool CheckID(int? id)
         {
             if (id == null) return false;
             else return true;

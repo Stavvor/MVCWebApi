@@ -9,7 +9,7 @@ namespace MVCWebApi.Controllers
 {
     public class AdressController : Controller
     {
-        private readonly IService<Adress> _service;
+        private readonly ICRUD<Adress> _service;
 
         public AdressController(LibraryContext dbContext)
         {

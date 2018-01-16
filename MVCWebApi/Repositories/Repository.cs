@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MVCWebApi.Repositories
 {
-    public class Repository<T> : IRepository<T>
+    public class Repository<T> : ICRUD<T>
                 where T : EntityModel
     {
         private readonly LibraryContext _context;

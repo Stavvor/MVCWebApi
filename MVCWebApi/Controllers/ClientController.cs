@@ -9,7 +9,7 @@ namespace MVCWebApi.Controllers
 {
     public class ClientController : Controller
     {
-        private readonly IService<Client> _service;
+        private readonly ICRUD<Client> _service;
 
         public ClientController(LibraryContext dbContext)
         {

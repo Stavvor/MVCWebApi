@@ -9,7 +9,7 @@ namespace MVCWebApi.Controllers
 {
     public class PublisherController : Controller
     {
-        private readonly IService<Publisher> _service;
+        private readonly ICRUD<Publisher> _service;
 
         public PublisherController(LibraryContext dbContext)
         {

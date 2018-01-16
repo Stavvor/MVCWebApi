@@ -9,7 +9,7 @@ namespace MVCWebApi.Controllers
 {
     public class GenreController : Controller
     {
-        private readonly IService<Genre> _service;
+        private readonly ICRUD<Genre> _service;
 
         public GenreController(LibraryContext dbContext)
         {

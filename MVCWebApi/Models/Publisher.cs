@@ -10,6 +10,6 @@ namespace MVCWebApi.Models
         public string Name { get; set; }
         public string Country { get; set; }
 
-        public List<Book> Books { get; set; }
+        //public List<Book> Books { get; set; }
     }
 }
