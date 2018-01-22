@@ -1,5 +1,4 @@
-﻿using MVCWebApi.Models.ManyToMany;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,12 +8,11 @@ namespace MVCWebApi.Models
     public class Order : EntityModel
     {
         public int ClientId { get; set; }
-        public DateTime SubmitDate { get; set; }
-        public DateTime RealizationDate { get; set; }
+        public string SubmitDate { get; set; }
+        public string RealizationDate { get; set; }        
+        public Client Client { get; set; }        
+        public int BookId { get; set; }
+        public Book Book { get; set; }
 
-        //public List<BookOrders> BooksOrders { get; set; }
-        public Client Client { get; set; }
-
-        //public virtual List<BookOrders> BookOrders { get; set; } = new List<BookOrders>();
     }
 }
