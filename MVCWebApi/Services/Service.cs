@@ -23,6 +23,11 @@ namespace MVCWebApi.Services
             return await _repository.GetAll();
         }
 
+        public async Task<List<T>> GetPage(int pageIndex, int pageSize)
+        {
+            return await _repository.GetPage(pageIndex,pageSize);
+        }
+
         public async Task Create(T entity)
         {
             await _repository.Create(entity);

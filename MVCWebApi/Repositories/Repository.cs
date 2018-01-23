@@ -22,7 +22,12 @@ namespace MVCWebApi.Repositories
         {
             return await _context.Set<T>().ToListAsync();
         }
-        
+
+        public async Task<List<T>> GetPage(int pageIndex, int pageSize)
+        {
+            return await _context.Set<T>().Skip(pageIndex * pageSize).Take(pageIndex).ToListAsync();
+        }
+
         public async Task Create(T entity)
         {
             _context.Add(entity);

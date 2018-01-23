@@ -11,6 +11,8 @@ namespace MVCWebApi
     {
         Task<List<T>> GetAll();
 
+        Task<List<T>> GetPage(int pageIndex, int pageSize);
+
         Task Create(T entity);
 
         Task<T> Read(int? id);
