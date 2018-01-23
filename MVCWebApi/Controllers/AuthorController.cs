@@ -22,6 +22,12 @@ namespace MVCWebApi.Controllers
             return Json(await _service.GetAll());
         }
 
+        [HttpGet("Author/getPage")]
+        public async Task<IActionResult> GetPage(int pageIndex, int pageSize)
+        {
+            return Json(await _service.GetPage(pageIndex, pageSize));
+        }
+
         [HttpPost("Author/Create")]
         public async Task Create([FromBody] Author author)
         {

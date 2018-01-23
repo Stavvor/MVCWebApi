@@ -22,6 +22,12 @@ namespace MVCWebApi.Controllers
             return Json(await _service.GetAll());
         }
 
+        [HttpGet("Order/getPage")]
+        public async Task<IActionResult> GetPage(int pageIndex, int pageSize)
+        {
+            return Json(await _service.GetPage(pageIndex, pageSize));
+        }
+
         [HttpPost("Order/Create")]
         public async Task Create([FromBody] Order order)
         {

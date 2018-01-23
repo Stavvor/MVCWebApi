@@ -25,7 +25,7 @@ namespace MVCWebApi.Repositories
 
         public async Task<List<T>> GetPage(int pageIndex, int pageSize)
         {
-            return await _context.Set<T>().Skip(pageIndex * pageSize).Take(pageIndex).ToListAsync();
+            return await _context.Set<T>().Skip(pageIndex * pageSize).Take(pageSize).ToListAsync();
         }
 
         public async Task Create(T entity)

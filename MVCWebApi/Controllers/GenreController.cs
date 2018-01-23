@@ -22,6 +22,12 @@ namespace MVCWebApi.Controllers
             return Json(await _service.GetAll());
         }
 
+        [HttpGet("Genre/getPage")]
+        public async Task<IActionResult> GetPage(int pageIndex, int pageSize)
+        {
+            return Json(await _service.GetPage(pageIndex, pageSize));
+        }
+
         [HttpPost("Genre/Create")]
         public async Task Create([FromBody] Genre genre)
         {
